@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Add Finance Record</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:40px;
+}
+
+input,select{
+padding:6px;
+margin:5px;
+}
+
+button{
+padding:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Add Finance Record</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>Amount:</label><br>
+<input type="number" name="amount" required><br>
+
+<label>Type:</label><br>
+<select name="type">
+
+<option value="income">Income</option>
+
+<option value="expense">Expense</option>
+
+</select><br>
+
+<label>Category:</label><br>
+<input type="text" name="category" required><br>
+
+<label>Date:</label><br>
+<input type="date" name="date" required><br>
+
+<label>Description:</label><br>
+<input type="text" name="description"><br><br>
+
+<button type="submit">Save</button>
+
+</form>
+
+</body>
+
+</html>

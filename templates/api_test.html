@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Finance API Test</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin: 40px;
+}
+
+button{
+padding: 8px;
+margin: 5px;
+}
+
+.box{
+border:1px solid gray;
+padding:15px;
+margin-top:10px;
+width:400px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Finance API Test Page</h2>
+
+<h3>Dashboard Summary</h3>
+
+<button onclick="loadSummary()">Load Summary</button>
+
+<div class="box">
+
+<p id="income"></p>
+
+<p id="expense"></p>
+
+<p id="balance"></p>
+
+</div>
+
+<h3>Records</h3>
+
+<button onclick="loadRecords()">Show All</button>
+
+<button onclick="filterIncome()">Income</button>
+
+<button onclick="filterExpense()">Expense</button>
+
+<div class="box" id="records"></div>
+
+
+<script>
+
+
+function loadSummary(){
+
+fetch("http://127.0.0.1:8000/api/summary/")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+document.getElementById("income").innerHTML =
+"Income: "+data.total_income
+
+document.getElementById("expense").innerHTML =
+"Expense: "+data.total_expense
+
+document.getElementById("balance").innerHTML =
+"Balance: "+data.net_balance
+
+})
+
+}
+
+
+
+function loadRecords(){
+
+fetch("http://127.0.0.1:8000/api/records/")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+document.getElementById("records").innerHTML =
+JSON.stringify(data,null,2)
+
+})
+
+}
+
+
+
+function filterIncome(){
+
+fetch("http://127.0.0.1:8000/api/records/?type=income")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+document.getElementById("records").innerHTML =
+JSON.stringify(data,null,2)
+
+})
+
+}
+
+
+
+function filterExpense(){
+
+fetch("http://127.0.0.1:8000/api/records/?type=expense")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+document.getElementById("records").innerHTML =
+JSON.stringify(data,null,2)
+
+})
+
+}
+
+
+</script>
+
+</body>
+
+</html>
