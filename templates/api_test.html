@@ -61,7 +61,7 @@ width:400px;
 
 function loadSummary(){
 
-fetch("http://127.0.0.1:8000/api/summary/")
+fetch("/api/summary/")
 
 .then(res=>res.json())
 
@@ -84,7 +84,7 @@ document.getElementById("balance").innerHTML =
 
 function loadRecords(){
 
-fetch("http://127.0.0.1:8000/api/records/")
+fetch("/api/records/")
 
 .then(res=>res.json())
 
@@ -101,7 +101,7 @@ JSON.stringify(data,null,2)
 
 function filterIncome(){
 
-fetch("http://127.0.0.1:8000/api/records/?type=income")
+fetch("/api/records/?type=income")
 
 .then(res=>res.json())
 
@@ -118,7 +118,8 @@ JSON.stringify(data,null,2)
 
 function filterExpense(){
 
-fetch("http://127.0.0.1:8000/api/records/?type=expense")
+
+fetch("/api/records/?type=expense")
 
 .then(res=>res.json())
 
