@@ -17,6 +17,6 @@ path('summary/',views.summary),
 path('check-role/',views.check_role),
 path('test/', views.api_test_page),
 path('add/', views.add_record_page),
-# path('', views.home),
+path('', views.api_home),
 
 ]

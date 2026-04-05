@@ -151,3 +151,23 @@ def check_role(request):
         })
 
     return Response({"message":"not logged in"})
+
+
+
+from django.http import HttpResponse
+
+def api_home(request):
+    return HttpResponse("""
+    <h2>Finance API Links</h2>
+
+    <a href="/api/add/">Add Record</a><br><br>
+
+    <a href="/api/test/">Dashboard</a><br><br>
+
+    <a href="/api/summary/">Summary</a><br><br>
+
+    <a href="/api/records/">Records</a><br><br>
+
+    <a href="/admin/">Admin Panel</a><br><br>
+
+    """)
